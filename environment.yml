@@ -1,0 +1,12 @@
+name: river-levels
+channels: 
+ - conda-forge
+dependencies:
+  - python=3.9
+  - streamlit
+  - pandas
+  - numpy
+  - requests
+  - pip
+  - altair
+  - dvc

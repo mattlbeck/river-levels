@@ -1,0 +1,4 @@
+[core]
+    remote = mattlbeck-river-levels
+['remote "mattlbeck-river-levels"']
+    url = s3://mattlbeck-river-levels

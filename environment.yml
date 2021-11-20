@@ -9,4 +9,9 @@ dependencies:
   - requests
   - pip
   - altair
-  - dvc
+  - dvc-s3
+  - pydeck
+  - black
+  - pip
+  - pip:
+    - -e .

@@ -1,0 +1,7 @@
+stages:
+  download_stations:
+    cmd: download_station_data
+    deps: 
+      - src/stations.py
+    outs:
+      - data/stations.json

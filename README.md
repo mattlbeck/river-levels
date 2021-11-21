@@ -5,6 +5,7 @@
 ```
 conda env create -f environment.yml
 conda activate river-levels
+pre-commit install
 ```
 
 ## ./river-levels-uk

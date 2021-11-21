@@ -12,6 +12,10 @@ pre-commit install
 
 Investigating UK river level trends using data from riverlevels.uk
 
-## ./explore.py
+## Streamlit interface
 
-Map measurement locations from EA data
+The data visualisation and analytic work is centered around a multipage streamlit app. This can be started with
+
+```
+streamlit run app.py
+```

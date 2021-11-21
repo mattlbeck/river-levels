@@ -29,7 +29,7 @@ def app():
         {"catchmentName": "No catchment", "riverName": "No river", "town": "No town"}
     )
 
-    st.header("Measurement stations")
+    st.header(PAGE_NAME)
 
     st.pydeck_chart(
         pdk.Deck(

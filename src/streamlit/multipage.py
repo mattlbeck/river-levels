@@ -12,7 +12,8 @@ class MultiPage:
 
     def __init__(self) -> None:
         """Constructor class to generate a list which will store all our applications as an instance variable."""
-        self.pages = []
+        self.pages = {}
+        self.titles = []
 
     def add_page(self, title, func) -> None:
         """Class Method to Add pages to the project
@@ -21,14 +22,12 @@ class MultiPage:
 
             func: Python function to render this page in Streamlit
         """
-
-        self.pages.append({"title": title, "function": func})
+        self.titles.append(title)
+        self.pages[title] = func
 
     def run(self):
         # Drodown to select the page to run
-        page = st.sidebar.selectbox(
-            "App Navigation", self.pages, format_func=lambda page: page["title"]
-        )
+        page = st.sidebar.selectbox("App Navigation", self.titles)
 
         # run the app function
-        page["function"]()
+        self.pages[page]()

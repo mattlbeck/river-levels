@@ -7,9 +7,6 @@ from src.streamlit.pages import stations
 
 app = MultiPage()
 
-# Main page
-stations.app()
-
 # Add pages
 for page in (stations,):
     app.add_page(page.PAGE_NAME, page.app)

@@ -4,9 +4,12 @@ stages:
     cmd: download_station_data
     deps:
     - path: src/stations.py
-      md5: 809c72143d6ac7a327baa0402249acc9
-      size: 639
+      md5: c75d3577d6b965b0a983f00b59c3c90b
+      size: 1284
     outs:
+    - path: data/station_measures.json
+      md5: d9aade1504d8a37a7501462e05d640df
+      size: 1089211
     - path: data/stations.json
-      md5: 072df9e6340b9cd460e084e4f3644174
-      size: 659606
+      md5: 25b430f6dce32ce5c1259cdbecc4db6a
+      size: 660366

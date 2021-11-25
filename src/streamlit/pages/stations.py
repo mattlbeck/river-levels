@@ -5,6 +5,8 @@ import streamlit as st
 import pandas as pd
 import pydeck as pdk
 
+import src.dataio as dataio
+
 PAGE_NAME = "Measurement Stations"
 
 MARKER_COLOUR = "#5fb6e2"
@@ -21,12 +23,14 @@ def hex_to_rgb(hex):
 
 def app():
     # Process mappable stations. Drop stations lacking coords and fill in NAs in there info
-    stations = pd.read_json(
-        "data/stations.json", orient="records", dtype={"long": float, "lat": float}
-    )
-    mappable_stations = stations.dropna(subset=["lat", "long"])
-    mappable_stations = mappable_stations.fillna(
-        {"catchmentName": "No catchment", "riverName": "No river", "town": "No town"}
+    mappable_stations = dataio.get_stations(mappable_only=True)
+    measures = dataio.get_measures()
+    measure = st.selectbox("Stations with measure", measures.parameterName.unique())
+    mappable_stations = pd.merge(
+        mappable_stations,
+        measures[measures.parameterName == measure][["stationReference"]],
+        on="stationReference",
+        how="inner",
     )
 
     st.header(PAGE_NAME)

@@ -5,3 +5,4 @@ stages:
       - src/stations.py
     outs:
       - data/stations.json
+      - data/station_measures.json

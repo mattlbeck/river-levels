@@ -1,5 +1,5 @@
 """
-Interface with data tracked data in this repo
+Interface with tracked data in this repo
 """
 import pandas as pd
 from pathlib import Path

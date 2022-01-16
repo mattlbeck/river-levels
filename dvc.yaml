@@ -6,3 +6,15 @@ stages:
     outs:
       - data/stations.json
       - data/station_measures.json
+  cache_catchment_readings:
+    cmd: download_catchment_readings
+    deps:
+      - src/catchment_readings.py
+      - data/stations.json
+      - data/station_measures.json
+    params:
+      - readings.catchments
+      - readings.qualifier
+    outs:
+      - data/catchment_readings.parquet:
+          checkpoint: true

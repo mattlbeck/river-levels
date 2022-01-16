@@ -13,3 +13,24 @@ stages:
     - path: data/stations.json
       md5: 25b430f6dce32ce5c1259cdbecc4db6a
       size: 660366
+  cache_catchment_readings:
+    cmd: download_catchment_readings
+    deps:
+    - path: data/station_measures.json
+      md5: d9aade1504d8a37a7501462e05d640df
+      size: 1089211
+    - path: data/stations.json
+      md5: 25b430f6dce32ce5c1259cdbecc4db6a
+      size: 660366
+    - path: src/catchment_readings.py
+      md5: 8aa1f0c7a151b76f72516486a995389a
+      size: 2079
+    params:
+      params.yaml:
+        readings.catchments:
+        - Wye
+        readings.qualifier: Stage
+    outs:
+    - path: data/catchment_readings.parquet
+      md5: 67942b679ce71bcd7a8ad36e8b692afd
+      size: 266810

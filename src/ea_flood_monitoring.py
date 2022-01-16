@@ -2,6 +2,7 @@
 from datetime import date
 from json.decoder import JSONDecodeError
 import requests
+import arrow
 
 API_ROOT = "https://environment.data.gov.uk/flood-monitoring/id"
 
@@ -29,14 +30,19 @@ class EaData:
         """
         return self.request(f"stations/{station_id}/measures")
 
-    def get_readings(self, measure_id, since_date: date):
+    def get_readings(self, measure_id, since_date: date = None):
         """
         Downloads the readings for a given station and measure.
         :param measure_id: The ID of the measure
         :param since_date: The ealiest date to query readings for
         """
-        since_date_str = since_date.strftime("%Y-%m-%d")
-        resp = self.request(f"measures/{measure_id}/readings?since={since_date_str}")
+        since_date_str = ""
+        if since_date is not None:
+            since_date_str = (
+                f"?since={arrow.get(since_date).format('YYYY-MM-DDThh:mm:ss[Z]')}"
+            )
+
+        resp = self.request(f"measures/{measure_id}/readings{since_date_str}")
 
         # extract just the date and value from the response
         values = [{k: r[k] for k in ["dateTime", "value"]} for r in resp["items"]]

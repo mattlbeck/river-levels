@@ -21,7 +21,7 @@ def main():
     qualifier = ws.params["qualifier"]
 
     stations = stations[stations.catchmentName.isin(catchments)][
-        ["stationReference", "riverName"]
+        ["stationReference", "riverName", "catchmentName"]
     ]
     measures = pd.merge(
         stations,
@@ -42,7 +42,9 @@ def main():
             readings = readings[pd.to_datetime(readings["dateTime"]) > latest_reading]
 
         print(f"Got {len(readings)} readings for {measure.riverName}")
-        readings = readings.assign(measure=measure.id, river=measure.riverName)
+        readings = readings.assign(
+            measure=measure.id, river=measure.riverName, catchment=measure.catchmentName
+        )
         catchment_readings = catchment_readings.append(readings)
 
     print(f"num readings cached after {len(catchment_readings)}")

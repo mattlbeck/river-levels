@@ -23,8 +23,8 @@ stages:
       md5: 25b430f6dce32ce5c1259cdbecc4db6a
       size: 660366
     - path: src/catchment_readings.py
-      md5: 8aa1f0c7a151b76f72516486a995389a
-      size: 2079
+      md5: de9e9ef15692248815eceb53e6c3a806
+      size: 2124
     params:
       params.yaml:
         readings.catchments:
@@ -32,5 +32,5 @@ stages:
         readings.qualifier: Stage
     outs:
     - path: data/catchment_readings.parquet
-      md5: 67942b679ce71bcd7a8ad36e8b692afd
-      size: 266810
+      md5: 55c94a712e5ca78fbd1cb822b6b54894
+      size: 209560

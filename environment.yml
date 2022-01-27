@@ -9,9 +9,9 @@ dependencies:
   - requests
   - pip
   - altair
-  - dvc-s3
   - pydeck
   - pre-commit
   - pip
   - pip:
     - -e .
+    - dvc[s3]
